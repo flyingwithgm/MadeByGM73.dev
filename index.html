@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>George Nuyekpe – Full-Stack Developer</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="George Nuyekpe – self-taught Ghanaian developer solving real African problems.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue:#1e3c72;
+      --blue-light:#2a5298;
+      --gold:#ffd700;
+      --white:#ffffff;
+      --glass:rgba(255,255,255,.15);
+      --shadow:0 8px 32px rgba(30,60,114,.15);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;color:var(--blue);background:#f8f9ff;line-height:1.6}
+    h1,h2,h3{line-height:1.3}
+    a{color:inherit;text-decoration:none}
+    section{padding:clamp(4rem,10vh,6rem) 1.5rem}
+
+    /* NAV */
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:999;
+      background:var(--glass);backdrop-filter:blur(10px);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:.75rem 1.5rem;border-bottom:1px solid var(--gold);
+    }
+    .logo{font-weight:700;font-size:1.4rem;color:var(--gold)}
+    nav{display:flex;align-items:center;gap:1.2rem;font-weight:600}
+    nav a{position:relative}
+    nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:.3s}
+    nav a:hover::after{width:100%}
+    .btn-resume{background:linear-gradient(45deg,var(--blue),var(--gold));color:#fff;padding:.5rem 1rem;border-radius:30px;transition:.3s;font-size:.9rem}
+    .btn-resume:hover{transform:translateY(-2px)}
+
+    /* HERO */
+    #hero{
+      height:100vh;
+      background:linear-gradient(135deg,var(--blue) 0%,var(--blue-light) 50%,var(--gold) 100%);
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;color:#fff;padding:0 1.5rem;
+    }
+    #hero h1{font-size:clamp(1.8rem,5vw,3.2rem);margin-bottom:.5rem}
+    #hero p{max-width:620px;margin-bottom:2rem;font-size:clamp(1rem,2vw,1.2rem)}
+    .cta-group{display:flex;gap:1rem;flex-wrap:wrap}
+    .cta-primary,.cta-secondary{padding:.8rem 2rem;border-radius:30px;font-weight:700;transition:.3s}
+    .cta-primary{background:linear-gradient(45deg,var(--blue),var(--gold));color:#fff}
+    .cta-secondary{border:2px solid var(--gold)}
+    .cta-primary:hover,.cta-secondary:hover{transform:translateY(-3px)}
+
+    /* ABOUT / STATS */
+    #about{background:linear-gradient(135deg,#f8f9ff 0%,#fff9e6 100%)}
+    .section-title{text-align:center;font-size:2.2rem;margin-bottom:2.5rem}
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;max-width:900px;margin:0 auto 3rem}
+    .stat-card{background:var(--white);border-radius:15px;padding:2rem;text-align:center;box-shadow:var(--shadow);opacity:0;transform:translateY(40px);transition:all .6s}
+    .stat-card.show{opacity:1;transform:translateY(0)}
+    .stat-number{font-size:2.3rem;font-weight:700;color:var(--gold)}
+    .story{max-width:700px;margin:0 auto;font-size:1.05rem}
+
+    /* SKILLS */
+    #skills{background:var(--white)}
+    .skills-flex{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;max-width:600px;margin:0 auto;
+    }
+    .skill-tag{
+      background:linear-gradient(45deg,var(--blue),var(--gold));
+      color:#fff;padding:.6rem 1.2rem;border-radius:30px;font-weight:600;font-size:.9rem;
+    }
+
+    /* PROJECTS */
+    #projects{background:#fff}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;max-width:1100px;margin:0 auto}
+    .project-card{background:var(--white);border-radius:15px;overflow:hidden;box-shadow:var(--shadow);transition:.4s}
+    .project-card:hover{transform:translateY(-10px) rotateX(5deg) rotateY(-5deg)}
+    .project-header{background:linear-gradient(45deg,var(--blue),var(--gold));color:#fff;padding:1.2rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+    .project-body{padding:1.2rem}
+    .tech-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
+    .tech-tags span{background:linear-gradient(45deg,var(--blue),var(--gold));color:#fff;font-size:.7rem;padding:.25rem .7rem;border-radius:20px}
+    .project-links{display:flex;gap:.8rem;margin-top:1rem}
+    .project-links a{flex:1;text-align:center;padding:.55rem;border-radius:20px;font-size:.85rem;font-weight:600}
+    .project-links .live{background:var(--blue);color:#fff}
+    .project-links .code{background:var(--gold);color:var(--blue)}
+
+    /* CONTACT */
+    #contact{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-light) 100%);color:#fff;text-align:center}
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.5rem;max-width:800px;margin:2rem auto 0}
+    .contact-item i{font-size:2.2rem;color:var(--gold);margin-bottom:.5rem}
+    .contact-item a{color:var(--gold);font-weight:700}
+
+    /* FOOTER */
+    footer{background:#111;color:#aaa;text-align:center;padding:1.5rem;font-size:.9rem}
+    footer a{color:var(--gold);margin:0 .4rem}
+
+    /* RESPONSIVE */
+    @media(max-width:600px){
+      header{flex-direction:column;padding:.75rem}
+      nav{gap:.8rem;margin-top:.5rem;font-size:.9rem}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <div class="logo">George Nuyekpe</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a class="btn-resume" href="resume.pdf" download>Resume</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <h1>From Palm-Plantation Inspector to Problem-Solving Developer</h1>
+    <p>
+      I swapped machetes for modules. Built life-saving apps on a Tecno Pop 9. Cold-messaged 36 businesses, landed my first ₵250 client, and never stopped shipping. I craft tech that solves Ghana’s everyday problems—no tutorials, only impact.
+    </p>
+    <div class="cta-group">
+      <a class="cta-primary" href="#projects">View My Projects</a>
+      <a class="cta-secondary" href="https://wa.me/233541068437" target="_blank">Start a Chat</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">My Journey in Numbers</h2>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-number" data-val="4">0</div><div>Live Projects</div></div>
+      <div class="stat-card"><div class="stat-number" data-val="36">0</div><div>Businesses Contacted</div></div>
+      <div class="stat-card"><div class="stat-number" data-val="250">0</div><div>First Revenue (GHS)</div></div>
+      <div class="stat-card"><div class="stat-number" data-val="100">0</div><div>% Self-Taught</div></div>
+    </div>
+    <p class="story">
+      I spent years as a lead mine inspector in Ghana’s palm plantations—evaluating risk, optimizing routes, and training teams. When COVID hit, I saw farmers and barbers lose business overnight. With nothing but a Tecno Pop 9 and free Wi-Fi, I taught myself to code. Thirty-six WhatsApp pitches later, one barber paid ₵250 for a booking system that now manages 100+ clients a week. Today I build tools that work on the cheapest Android phones and the shakiest networks—because that’s where real users live.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="section-title">Core Skills</h2>
+    <div class="skills-flex">
+      <span class="skill-tag">HTML</span>
+      <span class="skill-tag">CSS</span>
+      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">Vanilla JS</span>
+      <span class="skill-tag">Firebase</span>
+      <span class="skill-tag">React</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-header"><i class="fas fa-heartbeat"></i> GM73 AssistPro</div>
+        <div class="project-body">
+          <p>Emergency health assistant with voice-guided CPR & first-aid instructions for low-bandwidth areas.</p>
+          <div class="tech-tags"><span>JavaScript</span><span>Web Speech API</span><span>PWA</span></div>
+          <div class="project-links">
+            <a class="live" href="https://gm-73-assist-pro.vercel.app" target="_blank">Live Demo</a>
+            <a class="code" href="https://github.com/flyingwithgm" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header"><i class="fas fa-seedling"></i> FarmDoc-GH</div>
+        <div class="project-body">
+          <p>Agricultural advisory platform optimized for Tecno Pop 9—gives farmers weather & pest alerts offline.</p>
+          <div class="tech-tags"><span>HTML5</span><span>CSS3</span><span>Vanilla JS</span></div>
+          <div class="project-links">
+            <a class="live" href="https://farm-doc-gh.vercel.app" target="_blank">Live Demo</a>
+            <a class="code" href="https://github.com/flyingwithgm" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header"><i class="fas fa-cut"></i> Barber Booking System</div>
+        <div class="project-body">
+          <p>Income-generating booking platform that killed queues for a local barber and doubled daily revenue.</p>
+          <div class="tech-tags"><span>React</span><span>Local Storage</span><span>Responsive</span></div>
+          <div class="project-links">
+            <a class="live" href="https://amanbarber.vercel.app" target="_blank">Live Demo</a>
+            <a class="code" href="https://github.com/flyingwithgm" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-header"><i class="fas fa-file-alt"></i> AutoPortfolio WebApp</div>
+        <div class="project-body">
+          <p>Professional résumé generator: users fill a form, download a polished PDF in under 60 seconds.</p>
+          <div class="tech-tags"><span>JavaScript</span><span>PDF-lib</span><span>Form Handling</span></div>
+          <div class="project-links">
+            <a class="live" href="https://japasafe-pro-ub4s.vercel.app" target="_blank">Live Demo</a>
+            <a class="code" href="https://github.com/flyingwithgm" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Let's Work Together</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <i class="fab fa-whatsapp"></i>
+        <div><a href="https://wa.me/233541068437" target="_blank">WhatsApp</a></div>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <div><a href="mailto:georgemawutor3@gmail.com">Email</a></div>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div><a href="https://maps.google.com/?q=435P+46Q,+Apowa-+Mpohor+Rd,+Adum+Banso" target="_blank">Adum Banso, Ghana</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="https://linkedin.com/in/george-nuyekpe-817abb2a2" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/flyingwithgm" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="resume.pdf" download><i class="fas fa-file-download"></i></a>
+    <br>© <span id="year"></span> George Nuyekpe. Built with pure HTML, CSS &amp; grit.
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    /* Year */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Counter animation */
+    const counters = document.querySelectorAll('.stat-number');
+    const runCounters = () => {
+      counters.forEach(c=>{
+        const target = +c.dataset.val;
+        const inc = target / 50;
+        let cur = 0;
+        const timer = setInterval(()=>{
+          cur += inc;
+          if(cur < target) c.textContent = Math.floor(cur);
+          else{ c.textContent = target; clearInterval(timer); }
+        },30);
+      });
+    };
+
+    /* Intersection Observer */
+    const cards = document.querySelectorAll('.stat-card');
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          if(e.target.querySelector('.stat-number')) runCounters();
+          observer.unobserve(e.target);
+        }
+      });
+    },{threshold:.5});
+    cards.forEach(c=>observer.observe(c));
+  </script>
+</body>
+</html>
